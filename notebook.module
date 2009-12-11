@@ -5,12 +5,12 @@ function notebook_node_info() {
     'note' => array(
       'name' => t('note'),
       'module' => 'notebook',
-      'description' => t("A note is "),
+      'description' => t("Notes are entered and stored by users.  Notes have automatically generated links that point the page where the note was originally created. The notes (will be -> are) organized into note books via the book module."),
     )
   );
 }
 	
-function notebook_view() {
+function notebook_views_default_views() {
 	/* Define original view default for displaying the list of notes that the user has created */
 	
 	$str = 'some code';
