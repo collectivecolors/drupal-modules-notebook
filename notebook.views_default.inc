@@ -91,7 +91,7 @@ function notebook_views_default_views() {
     'type' => array(
       'operator' => 'in',
       'value' => array(
-        'tool' => 'tool',
+        'note' => 'note',
       ),
       'group' => '0',
       'exposed' => FALSE,
