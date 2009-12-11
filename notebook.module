@@ -1,0 +1,20 @@
+<?php 
+
+function notebook_node_info() {
+  return array(
+    'note' => array(
+      'name' => t('note'),
+      'module' => 'notebook',
+      'description' => t("A note is "),
+    )
+  );
+}
+	
+function notebook_view() {
+	/* Define original view default for displaying the list of notes that the user has created */
+	
+	$str = 'some code';
+		
+}
+
+// More hooks as needed
