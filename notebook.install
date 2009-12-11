@@ -1,0 +1,63 @@
+<?php
+
+//------------------------------------------------------------------------------
+// Drupal hooks
+//------------------------------------------------------------------------------
+
+/**
+ * Implementation of hook_install().
+ */
+function notebook_install() {
+  if (drupal_install_schema('notebook')) {
+    drupal_set_message(t('Notebook module was successfully installed.'));
+  }
+  else {
+    drupal_set_message(t('The installation of the Notebook module was not successful.'), 'error');
+  }
+}
+
+//------------------------------------------------------------------------------
+
+/**
+ * Implementation of hook_uninstall().
+ */
+function notebook_uninstall() {
+  drupal_uninstall_schema('notebook');
+  db_query("DELETE FROM {variable} WHERE name LIKE 'notebook_%%'");
+}
+
+//------------------------------------------------------------------------------
+
+/**
+ * Implementation of hook_schema().
+ */
+function notebook_schema() {
+	
+  $schema['note'] = array(
+    'description' => t('Note content type fields.'),
+    'fields' => array(
+      'nid' => array(
+        'description' => t('The node id of this note content.'),
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'vid' => array(
+        'description' => t('The node vid of this note content.'),
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'link' => array(
+        'description' => t('A link to the page that this note was created on.'),
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+    ),
+    'primary key' => array('nid', 'vid'),
+  );
+
+  return $schema;
+}
